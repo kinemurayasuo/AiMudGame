@@ -17,7 +17,8 @@ data class Persona(
     var weaknesses: Map<String, String> = mapOf(),
     var strengths: Map<String, String> = mapOf(),
     var immunities: Map<String, String> = mapOf(),
-    var passives: List<Passive> = listOf()
+    var passives: List<Passive> = listOf(),
+    var skills: List<Skill> = listOf()
 )
 
 
