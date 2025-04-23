@@ -3,12 +3,15 @@ package com.taewoo.aimudgame.application
 import com.taewoo.aimudgame.domain.Passive
 import com.taewoo.aimudgame.domain.Persona
 import com.taewoo.aimudgame.domain.Skill
+import com.taewoo.aimudgame.domain.repository.GameSessionPort
 import com.yourproject.domain.GameSession
 import org.springframework.stereotype.Service
 import java.util.UUID
 
 @Service
-class GameSessionService : GameSessionUseCase {
+class GameSessionService(private val gameSessionPort: GameSessionPort
+) : GameSessionUseCase
+ {
 
     // 세션 임시 메모리 저장 mutableMapOf
     private val sessions = mutableMapOf<String, GameSession>()
@@ -17,13 +20,12 @@ class GameSessionService : GameSessionUseCase {
     override fun createSession(persona: Persona): GameSession {
         val sessionId = UUID.randomUUID().toString()
         val session = GameSession(sessionId = sessionId, persona = persona)
-        sessions[sessionId] = session
-        return session
+        return gameSessionPort.save(session)
     }
 
     // 세션 상태 조회
     override fun getSession(sessionId: String): GameSession? {
-        return sessions[sessionId]
+        return gameSessionPort.findById(sessionId)
     }
 
     // 턴 진행
@@ -46,8 +48,7 @@ class GameSessionService : GameSessionUseCase {
             session.ending = "당신은 세계의 진실에 도달했다..."
         }
 
-        return session
+        return gameSessionPort.save(session)
     }
-
 
 }
