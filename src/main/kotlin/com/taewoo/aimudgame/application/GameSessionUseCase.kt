@@ -1,7 +1,7 @@
 package com.taewoo.aimudgame.application
 
 import com.taewoo.aimudgame.domain.Persona
-import com.yourproject.domain.GameSession
+import com.taewoo.aimudgame.domain.GameSession
 import java.awt.Choice
 
 interface GameSessionUseCase {

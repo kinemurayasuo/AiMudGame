@@ -4,7 +4,7 @@ import com.taewoo.aimudgame.domain.Passive
 import com.taewoo.aimudgame.domain.Persona
 import com.taewoo.aimudgame.domain.Skill
 import com.taewoo.aimudgame.domain.repository.GameSessionPort
-import com.yourproject.domain.GameSession
+import com.taewoo.aimudgame.domain.GameSession
 import org.springframework.stereotype.Service
 import java.util.UUID
 

@@ -5,7 +5,6 @@ spring:
   datasource:
     url: jdbc:mysql://localhost:3306/ai_mud_game?useSSL=false&serverTimezone=UTC
     username: root
-    password: root
 
   jpa:
     show-sql: true

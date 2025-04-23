@@ -2,7 +2,7 @@ package com.taewoo.aimudgame.adapter.inbound
 
 import com.taewoo.aimudgame.application.GameSessionService
 import com.taewoo.aimudgame.domain.Persona
-import com.yourproject.domain.GameSession
+import com.taewoo.aimudgame.domain.GameSession
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 import java.util.*

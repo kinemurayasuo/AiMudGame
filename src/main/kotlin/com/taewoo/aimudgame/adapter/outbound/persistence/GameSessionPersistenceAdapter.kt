@@ -1,7 +1,7 @@
 package com.taewoo.aimudgame.adapter.outbound.persistence
 
 import com.taewoo.aimudgame.domain.repository.GameSessionPort
-import com.yourproject.domain.GameSession
+import com.taewoo.aimudgame.domain.GameSession
 import org.springframework.stereotype.Repository
 
 @Repository

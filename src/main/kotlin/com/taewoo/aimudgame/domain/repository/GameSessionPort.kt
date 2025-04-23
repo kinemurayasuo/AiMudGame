@@ -1,6 +1,6 @@
 package com.taewoo.aimudgame.domain.repository
 
-import com.yourproject.domain.GameSession
+import com.taewoo.aimudgame.domain.GameSession
 
 interface GameSessionPort {
     fun save(session: GameSession): GameSession
