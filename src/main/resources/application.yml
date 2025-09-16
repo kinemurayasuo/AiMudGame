@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: AiMudGame
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/ai_mud_game?useSSL=false&serverTimezone=UTC
+    username: root
+
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+
+    docker:
+      compose:
+        enabled: false
+
