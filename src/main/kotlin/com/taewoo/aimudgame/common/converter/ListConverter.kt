@@ -9,6 +9,20 @@ import jakarta.persistence.Converter
 
 class ListConverter {
     @Converter
+    class StringListConverter : AttributeConverter<List<String>, String> {
+        private val gson = Gson()
+
+        override fun convertToDatabaseColumn(attribute: List<String>?): String {
+            return gson.toJson(attribute ?: emptyList())
+        }
+
+        override fun convertToEntityAttribute(dbData: String?): List<String> {
+            return if (dbData.isNullOrEmpty()) emptyList()
+            else gson.fromJson(dbData, object : TypeToken<List<String>>() {}.type)
+        }
+    }
+
+    @Converter
     class PassiveListConverter : AttributeConverter<List<Passive>, String> {
         private val gson = Gson()
 

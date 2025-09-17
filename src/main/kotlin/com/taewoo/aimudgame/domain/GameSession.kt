@@ -1,5 +1,6 @@
 package com.taewoo.aimudgame.domain
 
+import com.taewoo.aimudgame.common.converter.ListConverter
 import jakarta.persistence.*
 import java.util.UUID
 
@@ -20,12 +21,12 @@ data class GameSession(
     @JoinColumn(name = "persona_id", referencedColumnName = "id")
     val persona: Persona,
 
-    @Lob
     @Column(name = "log_history", columnDefinition = "TEXT")
+    @Convert(converter = ListConverter.StringListConverter::class)
     val logHistory: MutableList<String> = mutableListOf(),
 
-    @Lob
     @Column(name = "choice_history", columnDefinition = "TEXT")
+    @Convert(converter = ListConverter.StringListConverter::class)
     val choiceHistory: MutableList<String> = mutableListOf(),
 
     @Column(name = "assigned_class")

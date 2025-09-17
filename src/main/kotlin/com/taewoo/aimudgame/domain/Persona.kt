@@ -17,39 +17,60 @@ data class Persona(
     @Column(nullable = false)
     val name: String,
 
+    @Column(nullable = false)
     val age: Int,
+
+    @Column(nullable = false, length = 10)
     val gender: String,
+
+    @Column(nullable = false, length = 100)
     val trait: String,
+
+    @Column(nullable = false)
     var level: Int = 1,
+
+    @Column(nullable = false)
     var hp: Int = 10,
+
+    @Column(nullable = false)
     var mp: Int = 5,
+
+    @Column(nullable = false)
     var strength: Int = 0,
+
+    @Column(nullable = false)
     var magic: Int = 0,
+
+    @Column(nullable = false)
     var endurance: Int = 0,
+
+    @Column(nullable = false)
     var agility: Int = 0,
+
+    @Column(nullable = false)
     var luck: Int = 0,
 
-    @Lob
+    @Column(name = "resistances", columnDefinition = "TEXT")
     @Convert(converter = StringMapConverter::class)
     var resistances: ElementMap = mapOf(), // 예: "fire" to "strong"
 
-    @Lob
+    @Column(name = "weaknesses", columnDefinition = "TEXT")
     @Convert(converter = StringMapConverter::class)
     var weaknesses: ElementMap = mapOf(), // 예: "fire" to "weak"
 
-    @Lob
+    @Column(name = "strengths", columnDefinition = "TEXT")
     @Convert(converter = StringMapConverter::class)
     var strengths: ElementMap = mapOf(),
 
-    @Lob
+    @Column(name = "immunities", columnDefinition = "TEXT")
     @Convert(converter = StringMapConverter::class)
     var immunities: ElementMap = mapOf(),
 
-    @Lob
+    @Column(name = "passives", columnDefinition = "TEXT")
     @Convert(converter = ListConverter.PassiveListConverter::class)
     var passives: PassiveList = listOf(),
 
-    @Lob
+    @Column(name = "skills", columnDefinition = "TEXT")
     @Convert(converter = ListConverter.SkillListConverter::class)
     var skills: SkillList = listOf()
 )
