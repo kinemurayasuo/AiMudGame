@@ -9,12 +9,9 @@ import org.springframework.stereotype.Service
 import java.util.UUID
 
 @Service
-class GameSessionService(private val gameSessionPort: GameSessionPort
-) : GameSessionUseCase
- {
-
-    // 세션 임시 메모리 저장 mutableMapOf
-    private val sessions = mutableMapOf<String, GameSession>()
+class GameSessionService(
+    private val gameSessionPort: GameSessionPort
+) : GameSessionUseCase {
 
     // 세션 생성
     override fun createSession(persona: Persona): GameSession {
@@ -30,7 +27,8 @@ class GameSessionService(private val gameSessionPort: GameSessionPort
 
     // 턴 진행
     override fun updateTurn(sessionId: String, log: String, choice: String): GameSession? {
-        val session = sessions[sessionId] ?: return null
+        val session = gameSessionPort.findById(sessionId) ?: return null
+
         session.turn += 1
         session.logHistory.add(log)
         session.choiceHistory.add(choice)
