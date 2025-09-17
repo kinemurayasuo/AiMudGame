@@ -2,6 +2,7 @@ package com.taewoo.aimudgame.adapter.inbound
 
 import com.taewoo.aimudgame.adapter.inbound.dto.StartGameRequest
 import com.taewoo.aimudgame.adapter.inbound.dto.UpdateTurnRequest
+import com.taewoo.aimudgame.adapter.inbound.dto.GameSessionResponse
 import com.taewoo.aimudgame.adapter.inbound.dto.toResponse
 import com.taewoo.aimudgame.application.GameSessionUseCase
 import com.taewoo.aimudgame.domain.Persona
@@ -15,7 +16,7 @@ class GameSessionController(
 ) {
 
     @PostMapping("/start")
-    fun startSession(@RequestBody request: StartGameRequest): ResponseEntity<Any> {
+    fun startSession(@RequestBody request: StartGameRequest): ResponseEntity<GameSessionResponse> {
         // DTO를 Persona 엔티티로 변환
         val persona = Persona(
             name = request.name,
@@ -32,7 +33,7 @@ class GameSessionController(
     fun nextTurn(
         @PathVariable sessionId: String,
         @RequestBody request: UpdateTurnRequest
-    ): ResponseEntity<Any> {
+    ): ResponseEntity<GameSessionResponse> {
         val updatedSession = gameSessionUseCase.updateTurn(
             sessionId,
             request.log,
@@ -43,7 +44,7 @@ class GameSessionController(
     }
 
     @GetMapping("/{sessionId}")
-    fun getSession(@PathVariable sessionId: String): ResponseEntity<Any> {
+    fun getSession(@PathVariable sessionId: String): ResponseEntity<GameSessionResponse> {
         val session = gameSessionUseCase.getSession(sessionId)
             ?: return ResponseEntity.notFound().build()
         return ResponseEntity.ok(session.toResponse())

@@ -1,37 +1,37 @@
 package com.taewoo.aimudgame.adapter.inbound.dto
 
-// 게임 시작 요청 DTO
+// ============= Request DTOs =============
+
 data class StartGameRequest(
     val name: String,
     val age: Int,
     val gender: String,
     val trait: String
-    // 다른 초기 페르소나 정보들...
 )
 
-// 턴 진행 요청 DTO
 data class UpdateTurnRequest(
     val log: String,
     val choice: String
 )
 
-// 응답 DTO들
+// ============= Response DTOs =============
+
 data class PersonaResponse(
     val id: Long,
     val name: String,
     val age: Int,
     val gender: String,
     val trait: String,
-    var level: Int,
-    var hp: Int,
-    var mp: Int,
-    var strength: Int,
-    var magic: Int,
-    var endurance: Int,
-    var agility: Int,
-    var luck: Int,
-    val skills: List<String>, // Skill 객체의 이름만 리스트로 변환
-    val passives: List<String> // Passive 객체의 이름만 리스트로 변환
+    val level: Int,
+    val hp: Int,
+    val mp: Int,
+    val strength: Int,
+    val magic: Int,
+    val endurance: Int,
+    val agility: Int,
+    val luck: Int,
+    val skills: List<String>,
+    val passives: List<String>
 )
 
 data class GameSessionResponse(
